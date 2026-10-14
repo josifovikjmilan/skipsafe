@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SkipSafe
 
-## Getting Started
+SkipSafe helps IE bachelor students track absences per course so they never fail a course on attendance.
 
-First, run the development server:
+Under the IE University bachelor attendance policy for 2026/27, attendance below 80% of a course gives a 0.0 in both the ordinary and the extraordinary call. A 30 session course allows 6 absences and a 15 session course allows 3. SkipSafe keeps that count for every course in one place.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What a user does
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Signs up with email and password.
+2. Adds each course with its number of sessions (30 by default).
+3. Taps "I missed a class" after each absence and sees how many are left, with a warning at the limit and when attendance drops below 80%.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Each user only sees their own courses.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
+- Next.js 16 (App Router)
+- Supabase Auth (email and password) and Postgres with Row Level Security
+- Deployed on Vercel
 
-To learn more about Next.js, take a look at the following resources:
+## Run it locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. `npm install`
+2. Copy `.env.example` to `.env.local` and add your Supabase Project URL and publishable key.
+3. In Supabase, open SQL Editor, New query, paste `supabase/schema.sql` and click Run.
+4. In Supabase, Authentication, Sign In / Providers, Email: turn "Confirm email" off.
+5. `npm run dev` and open http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Security
 
-## Deploy on Vercel
+- All data is stored in the `public.courses` table. Row Level Security is on, and every policy checks `auth.uid() = user_id`.
+- Logged out visitors have no access to the table.
+- Only the Supabase URL and the publishable key reach the browser. Keys live in `.env.local` (ignored by git) and in Vercel environment variables.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Not an official IE University tool.

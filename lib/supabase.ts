@@ -1,0 +1,22 @@
+import { createBrowserClient } from "@supabase/ssr";
+import type { SupabaseClient } from "@supabase/supabase-js";
+
+// Only the project URL and the publishable (anon) key reach the browser.
+// Both are public by design; Row Level Security protects the data.
+const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const key =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+let client: SupabaseClient | null = null;
+
+export function getSupabase(): SupabaseClient {
+  if (!url || !key) {
+    throw new Error(
+      "Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY. Add them to .env.local and to the Vercel environment variables.",
+    );
+  }
+  // The session lives in cookies (not localStorage) and all user data lives in Supabase tables.
+  client ??= createBrowserClient(url, key);
+  return client;
+}

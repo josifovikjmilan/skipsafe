@@ -1,69 +1,85 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import BudgetStrip from "@/components/BudgetStrip";
+import { getBudget, POLICY_URL } from "@/lib/budget";
 
 export default function Home() {
+  const example = getBudget(30, 4);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main>
+      <section className="wrap hero">
+        <div className="hero-copy">
+          <h1>Know how many classes you can still miss.</h1>
+          <p className="lede">
+            SkipSafe is an absence tracker for IE University bachelor students.
+            Add your courses, log every absence, and always see how far you are
+            from the 80% attendance limit that fails you.
           </p>
+          <div className="hero-actions">
+            <Link href="/signup" className="btn btn-primary btn-large">
+              Sign up free
+            </Link>
+            <p className="hero-note">
+              Takes 30 seconds. Already have an account?{" "}
+              <Link href="/login">Log in</Link>
+            </p>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+
+        <figure className="hero-demo" aria-label="Example of a course in SkipSafe">
+          <div className="course-card demo-card">
+            <div className="course-top">
+              <h2 className="course-name">Recommendation Engines</h2>
+              <span className="status status-careful">Careful</span>
+            </div>
+            <p className="course-sessions">30 sessions, so 6 absences allowed</p>
+            <BudgetStrip budget={example} animate />
+            <p className="course-count">
+              <strong>2 left.</strong> 4 of 6 absences used.
+            </p>
+          </div>
+          <figcaption>Each square is one absence you are allowed.</figcaption>
+        </figure>
+      </section>
+
+      <section className="wrap steps" aria-labelledby="how">
+        <h2 id="how">How it works</h2>
+        <ol>
+          <li>
+            <strong>Add each course</strong> with the number of sessions in its
+            syllabus.
+          </li>
+          <li>
+            <strong>Tap “I missed a class”</strong> every time you are absent.
+          </li>
+          <li>
+            <strong>See what is left</strong> for every course in one list, before
+            Program Management tells you it is too late.
+          </li>
+        </ol>
+      </section>
+
+      <section className="wrap rule" aria-labelledby="rule">
+        <h2 id="rule">The rule SkipSafe counts for you</h2>
+        <p>
+          Under the IE University bachelor attendance policy for 2026/27,
+          attendance below 80% of a course gives a 0.0 in both the ordinary and
+          the extraordinary call. A 30 session course allows 6 absences. A 15
+          session course allows 3.
+        </p>
+        <p>
+          Justified absences that you file on the Virtual Help Desk within 7 days
+          do not count toward the limit, so only log the ones that do.{" "}
+          <a href={POLICY_URL} target="_blank" rel="noreferrer">
+            Read the official policy
           </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          .
+        </p>
+      </section>
+
+      <footer className="wrap site-footer">
+        <p>Made by an IE University student. Not an official IE University tool.</p>
+      </footer>
+    </main>
   );
 }
