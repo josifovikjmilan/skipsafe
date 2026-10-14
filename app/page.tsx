@@ -9,7 +9,7 @@ export default function Home() {
     <main>
       <section className="wrap hero">
         <div className="hero-copy">
-          <h1>Know how many classes you can still miss.</h1>
+          <h1>Know how many classes you can still miss at IE.</h1>
           <p className="lede">
             SkipSafe is an absence tracker for IE University bachelor students.
             Professors record attendance in Qwickly, Blackboard or SmartSeats,

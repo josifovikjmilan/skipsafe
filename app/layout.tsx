@@ -4,7 +4,7 @@ import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "SkipSafe: know how many classes you can still miss",
+  title: "SkipSafe: know how many classes you can still miss at IE",
   description:
     "Absence tracker for IE University bachelor students. Attendance is split across Qwickly, Blackboard and SmartSeats, so SkipSafe keeps every course on one screen and shows how far you are from the 80% limit.",
 };
