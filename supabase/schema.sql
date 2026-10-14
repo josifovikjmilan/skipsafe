@@ -61,5 +61,16 @@ create policy "courses_delete_own" on public.courses
 revoke all on public.courses from anon, authenticated;
 grant select, insert, update, delete on public.courses to authenticated;
 
+-- Functions are not part of the public API: nobody calls them over REST.
+revoke execute on function public.set_updated_at() from public, anon, authenticated;
+do $$
+begin
+  -- Created by Supabase when "Enable automatic RLS" is on.
+  if to_regprocedure('public.rls_auto_enable()') is not null then
+    revoke execute on function public.rls_auto_enable() from public, anon, authenticated;
+  end if;
+end;
+$$;
+
 -- Tell the API to pick up the new table right away.
 notify pgrst, 'reload schema';
