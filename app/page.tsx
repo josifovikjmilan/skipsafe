@@ -51,7 +51,8 @@ export default function Home() {
             syllabus.
           </li>
           <li>
-            <strong>Tap “I missed a class”</strong> every time you are absent.
+            <strong>Tap “I missed a class”</strong> every time you are absent. A
+            double class counts as two.
           </li>
           <li>
             <strong>See what is left</strong> for every course in one list, before
@@ -66,7 +67,8 @@ export default function Home() {
           Under the IE University bachelor attendance policy for 2026/27,
           attendance below 80% of a course gives a 0.0 in both the ordinary and
           the extraordinary call. That allows 20% of the sessions, rounded down:
-          3 absences for 15 sessions, 4 for 20, 6 for 30 and 7 for 35.
+          3 absences for 15 sessions, 4 for 20, 6 for 30 and 7 for 35. A double
+          class counts as two sessions, so skipping one uses two absences.
         </p>
         <p>
           Justified absences that you file on the Virtual Help Desk within 7 days

@@ -196,7 +196,8 @@ export default function AppPage() {
           <h2>No courses yet</h2>
           <p>
             Add your first course above. Then tap “I missed a class” each time
-            you are absent, and SkipSafe shows how many absences you have left.
+            you are absent (or “Missed a double class” for a double block), and
+            SkipSafe shows how many absences you have left.
           </p>
         </div>
       ) : (

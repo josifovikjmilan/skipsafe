@@ -20,6 +20,19 @@ export default function CourseCard({
   const budget = getBudget(course.total_sessions, course.absences);
   // While the field is being edited it holds a draft; otherwise it shows the saved value.
   const [sessionsDraft, setSessionsDraft] = useState<string | null>(null);
+  // Remembers the last tap (1 or 2) so Undo removes exactly that.
+  const [lastAdded, setLastAdded] = useState<number | null>(null);
+
+  function addAbsences(n: number) {
+    setLastAdded(n);
+    onAbsences(course.absences + n);
+  }
+
+  function undo() {
+    const n = Math.min(lastAdded ?? 1, course.absences);
+    setLastAdded(null);
+    onAbsences(course.absences - n);
+  }
 
   function commitSessions() {
     const draft = sessionsDraft;
@@ -53,15 +66,24 @@ export default function CourseCard({
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() => onAbsences(course.absences + 1)}
-          disabled={saving || course.absences >= course.total_sessions}
+          onClick={() => addAbsences(1)}
+          disabled={saving || course.absences + 1 > course.total_sessions}
         >
           I missed a class
         </button>
         <button
           type="button"
           className="btn btn-quiet"
-          onClick={() => onAbsences(course.absences - 1)}
+          onClick={() => addAbsences(2)}
+          disabled={saving || course.absences + 2 > course.total_sessions}
+          title="A double class counts as two sessions"
+        >
+          Missed a double class
+        </button>
+        <button
+          type="button"
+          className="btn btn-quiet"
+          onClick={undo}
           disabled={saving || course.absences === 0}
         >
           Undo
