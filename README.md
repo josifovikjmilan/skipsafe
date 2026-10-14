@@ -2,7 +2,7 @@
 
 SkipSafe helps IE bachelor students track absences per course so they never fail a course on attendance.
 
-Under the IE University bachelor attendance policy for 2026/27, attendance below 80% of a course gives a 0.0 in both the ordinary and the extraordinary call. A 30 session course allows 6 absences and a 15 session course allows 3. SkipSafe keeps that count for every course in one place.
+Under the IE University bachelor attendance policy for 2026/27, attendance below 80% of a course gives a 0.0 in both the ordinary and the extraordinary call. A 30 session course allows 6 absences and a 15 session course allows 3. Professors record attendance in different places (Qwickly, Blackboard or SmartSeats), so there is no single place to see how many absences you have left. SkipSafe keeps that count for every course in one place.
 
 ## What a user does
 

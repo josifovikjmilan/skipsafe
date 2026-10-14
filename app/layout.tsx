@@ -6,7 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 export const metadata: Metadata = {
   title: "SkipSafe: know how many classes you can still miss",
   description:
-    "Absence tracker for IE University bachelor students. See how many absences you have left in every course on one screen and stay above the 80% attendance limit.",
+    "Absence tracker for IE University bachelor students. Attendance is split across Qwickly, Blackboard and SmartSeats, so SkipSafe keeps every course on one screen and shows how far you are from the 80% limit.",
 };
 
 export const viewport: Viewport = {

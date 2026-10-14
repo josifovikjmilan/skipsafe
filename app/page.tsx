@@ -12,9 +12,9 @@ export default function Home() {
           <h1>Know how many classes you can still miss.</h1>
           <p className="lede">
             SkipSafe is an absence tracker for IE University bachelor students.
-            See how many absences you have left in every course on one screen,
-            instead of checking Blackboard class by class, and stay above the
-            80% attendance limit that fails you.
+            Professors record attendance in Qwickly, Blackboard or SmartSeats,
+            so SkipSafe keeps your absences for every course on one screen and
+            shows how far you are from the 80% limit that fails you.
           </p>
           <div className="hero-actions">
             <Link href="/signup" className="btn btn-primary btn-large">
