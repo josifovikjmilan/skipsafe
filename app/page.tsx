@@ -12,8 +12,9 @@ export default function Home() {
           <h1>Know how many classes you can still miss.</h1>
           <p className="lede">
             SkipSafe is an absence tracker for IE University bachelor students.
-            Add your courses, log every absence, and always see how far you are
-            from the 80% attendance limit that fails you.
+            See how many absences you have left in every course on one screen,
+            instead of checking Blackboard class by class, and stay above the
+            80% attendance limit that fails you.
           </p>
           <div className="hero-actions">
             <Link href="/signup" className="btn btn-primary btn-large">
@@ -64,8 +65,8 @@ export default function Home() {
         <p>
           Under the IE University bachelor attendance policy for 2026/27,
           attendance below 80% of a course gives a 0.0 in both the ordinary and
-          the extraordinary call. A 30 session course allows 6 absences. A 15
-          session course allows 3.
+          the extraordinary call. That allows 20% of the sessions, rounded down:
+          3 absences for 15 sessions, 4 for 20, 6 for 30 and 7 for 35.
         </p>
         <p>
           Justified absences that you file on the Virtual Help Desk within 7 days
